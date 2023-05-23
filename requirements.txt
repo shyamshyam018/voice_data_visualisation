@@ -3,6 +3,7 @@ pyperclip
 streamlit==0.88.0
 pydub==0.25.1
 SpeechRecognition==3.8.1
-ffmpeg-python==0.2.0
+ffmpeg==1.4
+
 
 
