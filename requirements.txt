@@ -1,3 +1,4 @@
 streamlit
 pyshorteners
 pyperclip
+pandas
