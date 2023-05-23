@@ -1,6 +1,6 @@
 import streamlit as st
 from pydub import AudioSegment, silence
-import speech_recognition as sr
+import SpeechRecognition as sr
 
 recog = sr.Recognizer()
 
