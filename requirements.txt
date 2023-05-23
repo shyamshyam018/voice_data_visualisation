@@ -1,7 +1,6 @@
-streamlit==0.88.0
-pydub==0.25.1
 pyshorteners
 pyperclip
-pydub
-pocketsphinx==0.1.15
+streamlit==0.88.0
+pydub==0.25.1
+SpeechRecognition==3.8.1
 
