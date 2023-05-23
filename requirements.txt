@@ -2,4 +2,4 @@ streamlit
 pyshorteners
 pyperclip
 pydub
-SpeechRecognition
+speech_recognition
