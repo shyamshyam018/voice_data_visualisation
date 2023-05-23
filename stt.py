@@ -1,8 +1,6 @@
 import streamlit as st
 from pydub import AudioSegment, silence
-import speech_recognition as sr
-
-recog = sr.Recognizer()
+from pocketsphinx import AudioFile
 
 st.markdown("<h1 style='text-align:center;'>AUDIO TO TEXT</h1>", unsafe_allow_html=True)
 st.markdown("---", unsafe_allow_html=True)
@@ -15,12 +13,7 @@ if audio:
                                       keep_silence=100)
     for index, chunk in enumerate(chunks):
         chunk.export(str(index) + ".wav", format="wav")
-        with sr.AudioFile(str(index) + ".wav") as source:
-            recorded = recog.record(source)
-            try:
-                text = recog.recognize_google(recorded)
-                st.write(text)
-            except sr.UnknownValueError:
-                st.write("Unable to recognize speech")
-            except sr.RequestError:
-                st.write("Speech recognition service is unavailable")
+        with AudioFile(str(index) + ".wav") as source:
+            for phrase in source:
+                text = phrase.hypothesis()
+                print(text)
