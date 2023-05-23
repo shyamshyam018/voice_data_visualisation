@@ -2,3 +2,4 @@ streamlit
 pyshorteners
 pyperclip
 pydub
+SpeechRecognition
