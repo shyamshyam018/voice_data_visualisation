@@ -3,4 +3,5 @@ pydub==0.25.1
 pyshorteners
 pyperclip
 pydub
-speech_recognition
+pocketsphinx==0.1.15
+
