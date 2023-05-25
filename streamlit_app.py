@@ -9,7 +9,7 @@ st.set_page_config(page_title="Speech to Text Transcription App", page_icon="ðŸ‘
 
 # Logo and header
 st.text("")
-st.image("https://moodle.bitsathy.ac.in/pluginfile.php/1/theme_adaptable/logo/1658802280/bit-logo-text.png", width=125)
+st.image("https://moodle.bitsathy.ac.in/pluginfile.php/1/theme_adaptable/logo/1658802280/bit-logo-text.png", width=400)
 st.title("Speech to text transcription app")
 
 st.write("""  
