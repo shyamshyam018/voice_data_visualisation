@@ -20,8 +20,8 @@ st.markdown(
 st.title("Speech to text transcription app")
 
 st.write("""  
-- Upload a wav file, transcribe it, then export it to a text file!
-- Use cases: call centres, team meetings, training videos, school calls etc.
+- UPLOAD A WAV FILE OF YOUR SPEECH CONTAINING INPUT DATA AND TRANSCRIBE
+- NOW YOU CAN VISUALISE YOUR DATA , HANDS FREE!
 """)
 
 st.text("")
@@ -31,7 +31,7 @@ c1, c2, c3 = st.columns([1, 4, 1])
 with c2:
     with st.form(key="my_form"):
         f = st.file_uploader("", type=[".wav"])
-        st.info("👆 Upload a .wav file. Try a sample: [Sample 01](https://github.com/CharlyWargnier/CSVHub/blob/main/Wave_files_demos/Welcome.wav?raw=true) | [Sample 02](https://github.com/CharlyWargnier/CSVHub/blob/main/Wave_files_demos/The_National_Park.wav?raw=true)")
+        st.info("👆 Upload a .wav file")
         submit_button = st.form_submit_button(label="Transcribe")
 
 if f is not None:
