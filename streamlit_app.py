@@ -46,12 +46,11 @@ if f is not None:
 Thank you for choosing the Olympus Dictation Management System. The Olympus Dictation Management System gives you the power to manage your dictations, transcriptions, and documents seamlessly and to improve the productivity of your daily work. For example, you can automatically send the dictation files or transcribed documents to your assistant or the author via email or FTP. If you are using the speech recognition software, the speech recognition engine works in the background to support your document creation. We hope you enjoy the simple, flexible, reliable, and secure solution from Olympus.
 """
 
+        st.info(transcript)
+
         for word in transcript.split():
-            for letter in word:
-                st.write(letter, end='', flush=True)
-                time.sleep(0.05)
-            st.write(" ", end='', flush=True)
-            time.sleep(0.1)
+            st.markdown(f'<span style="color: blue;">{word}</span>', unsafe_allow_html=True)
+            time.sleep(0.5)
 
         st.download_button(
             "Download the transcription",
