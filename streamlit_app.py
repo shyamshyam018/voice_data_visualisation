@@ -8,33 +8,38 @@ import os
 st.set_page_config(page_title="Speech to Text Transcription App", page_icon="👄")
 
 # Logo and header
+st.text("")
+st.image("https://emojipedia-us.s3.amazonaws.com/source/skype/289/parrot_1f99c.png", width=125)
 st.title("Speech to text transcription app")
-st.markdown("---")
+
 st.write("""  
 - Upload a wav file, transcribe it, then export it to a text file!
 - Use cases: call centres, team meetings, training videos, school calls etc.
 """)
 
-# Center-align the image
-col1, col2, col3 = st.columns([1, 4, 1])
-with col2:
-    st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
-    st.image("https://emojipedia-us.s3.amazonaws.com/source/skype/289/parrot_1f99c.png", width=125)
-    st.markdown('</div>', unsafe_allow_html=True)
+st.text("")
 
-# File upload and transcription
-st.markdown("---")
-with st.form(key="my_form"):
-    file = st.file_uploader("Upload a .wav file", type=[".wav"])
-    submit_button = st.form_submit_button("Transcribe")
+c1, c2, c3 = st.columns([1, 4, 1])
 
-if file is not None:
-    st.audio(file, format="wav")
-    file_size = round(file.size / 1000000, 1)
+with c2:
+    with st.form(key="my_form"):
+        f = st.file_uploader("", type=[".wav"])
+        st.info("👆 Upload a .wav file. Try a sample: [Sample 01](https://github.com/CharlyWargnier/CSVHub/blob/main/Wave_files_demos/Welcome.wav?raw=true) | [Sample 02](https://github.com/CharlyWargnier/CSVHub/blob/main/Wave_files_demos/The_National_Park.wav?raw=true)")
+        submit_button = st.form_submit_button(label="Transcribe")
 
-    if file_size < 5:
+if f is not None:
+    st.audio(f, format="wav")
+    path_in = f.name
+    # Get file size from buffer
+    old_file_position = f.tell()
+    f.seek(0, os.SEEK_END)
+    getsize = f.tell()
+    f.seek(old_file_position, os.SEEK_SET)
+    getsize = round((getsize / 1000000), 1)
+
+    if getsize < 5:  # File more than 5 MB
         # To read file as bytes:
-        bytes_data = file.read()
+        bytes_data = f.getvalue()
 
         transcript = """
 Thank you for choosing the Olympus Dictation Management System. The Olympus Dictation Management System gives you the power to manage your dictations, transcriptions, and documents seamlessly and to improve the productivity of your daily work. For example, you can automatically send the dictation files or transcribed documents to your assistant or the author via email or FTP. If you are using the speech recognition software, the speech recognition engine works in the background to support your document creation. We hope you enjoy the simple, flexible, reliable, and secure solution from Olympus.
@@ -51,6 +56,8 @@ Thank you for choosing the Olympus Dictation Management System. The Olympus Dict
 
     else:
         st.warning("🚨 We've limited this demo to 5MB files. Please upload a smaller file.")
+        st.stop()
 
 else:
+    path_in = None
     st.stop()
