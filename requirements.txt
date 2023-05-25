@@ -1,8 +1,9 @@
 requests
 streamlit>=1.4.0
 click==8
-plotly==4.14.3
 pandas==1.2.0
 openpyxl>=3.0.7
 numpy>=1.21.0
+plotly>=5.0.0
+
 
