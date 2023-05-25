@@ -1,7 +1,4 @@
 import streamlit as st
-import requests
-import json
-import os
 import pandas as pd
 import plotly.express as px
 import base64
@@ -57,12 +54,9 @@ Thank you for choosing the Olympus Dictation Management System. The Olympus Dict
 
         st.info(transcript)
 
-        st.download_button(
-            "Download the transcription",
-            transcript,
-            file_name="transcript.txt",
-            mime="text/plain"
-        )
+        if st.button("Download the transcription"):
+            st.session_state["transcription"] = transcript
+            st.experimental_rerun()
 
     else:
         st.warning("🚨 We've limited this demo to 5MB files. Please upload a smaller file.")
@@ -98,6 +92,13 @@ if selection == 'Description':
 elif selection == 'Speech to Text':
     st.header('Speech to Text')
     st.write('Upload a WAV file containing speech and transcribe it.')
+    if "transcription" in st.session_state:
+        st.info(st.session_state["transcription"])
+        st.markdown("---")
+        st.header("Navigate to Excel Plotter")
+        st.write("Click the button below to navigate to the Excel Plotter section.")
+        if st.button("Go to Excel Plotter"):
+            st.experimental_rerun()
     # Rest of the code for Speech to Text section
 
 elif selection == 'Excel Plotter':
