@@ -3,7 +3,6 @@ import streamlit as st
 import requests
 import json
 import os
-import time
 
 # Title and favicon
 st.set_page_config(page_title="Speech to Text Transcription App", page_icon="👄")
@@ -47,10 +46,6 @@ Thank you for choosing the Olympus Dictation Management System. The Olympus Dict
 """
 
         st.info(transcript)
-
-        for word in transcript.split():
-            st.markdown(f'<span style="color: blue;">{word}</span>', unsafe_allow_html=True)
-            time.sleep(0.5)
 
         st.download_button(
             "Download the transcription",
